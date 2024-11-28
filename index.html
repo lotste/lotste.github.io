@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>100 dagen</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/global.css" type="text/css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/jquery.superscrollorama.js"></script>
+    <script type="text/javascript" src="js/indexscroll.js"></script>
+
+    <script>
+        //countdown seconds
+        var birth = new Date(2008, 9, 1, 8, 40, 0, 0);
+        var audio = new Audio();
+        var video = null;
+        var currentAudio = "none";
+
+        function countSecondsSinceBirth() {
+            var now = new Date();
+            var diff = Math.ceil((now - birth) / 1000);
+            $('#secondsSinceBirth').text(diff);
+            setTimeout(countSecondsSinceBirth, 1000);
+        }
+
+
+        $(document).ready(function () {
+            setTimeout(countSecondsSinceBirth, 1000);
+
+            video = document.getElementById("danceVideo");
+            $(window).scroll(function () {
+                //    while(true){
+
+                if ($(window).scrollTop() > $("#zone10").position().top - $(window).height() / 2) {
+                    if (currentAudio != "zone10") {
+                        currentAudio = "zone10";
+                        audio.pause();
+                        if (video != null)
+                            video.play();
+                    }
+                } else if ($(window).scrollTop() > $("#zone7").position().top - $(window).height() / 2) {
+                    audio.pause();
+                    video.pause();
+
+                } else if ($(window).scrollTop() > $("#zone4").position().top - $(window).height() / 2) {
+                    if (currentAudio != "zone4") {
+                        currentAudio = "zone4";
+                        audio.pause();
+                        if (video != null)
+                            video.pause();
+                        audio.src = "feest.mp3";
+                        audio.play();
+                    }
+                } else {
+                    currentAudio = "none";
+                    audio.pause();
+                }
+            });
+
+        });
+
+
+    </script>
+
+</head>
+
+<body>
+    <div id="zone1">
+        <h1>Scroll zachtjes naar beneden</h1>
+        <img src="img/navigate-down.png" alt="pijl naar beneden">
+
+    </div>
+    <div id="zone2">
+
+        <h1>Ongeveer <span class="special">5 en een half jaar geleden</span>, op maandag 2 september '19, of <span
+                id="secondsSinceBirth" class="special"></span> seconden geleden kwamen <span class="special">Wij</span>
+            de eerste keer naar de grote school...</h1>
+        <p><img class="1" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="1" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="1" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="1" src="img/kind.png" alt="" height="200" style="opacity:0;">
+        </p>
+        <p><img class="2" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="2" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="2" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="2" src="img/kind.png" alt="" height="200" style="opacity:0;">
+        </p>
+        <p><img class="3" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="3" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="3" src="img/kind.png" alt="" height="200" style="opacity:0;">
+            <img class="3" src="img/kind.png" alt="" height="200" style="opacity:0;">
+        </p>
+    </div>
+    <div id="zone3">
+        <div id="container">
+            <h1>Nog <span class="special">100</span> dagen</h1>
+            <h1 class="vieren">En dat moeten<br />we vieren!!!</h1>
+
+        </div>
+    </div>
+    <div id="zone4">
+        <div class="container">
+            <div class="container2">
+                <h1>Wat dacht je van een <span class="red">feestje</span>?</h1>
+                <h2>breng je dansschoenen mee, en je goed humeur! :)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="zone7">
+        <div class="container">
+            <h1>Wanneer</h1>
+            <h2>zaterdag 29 februari<br>21:00</h2>
+        </div>
+    </div>
+    <div id="zone8">
+        <h1>Waar</h1>
+        <h2>Arbeidstraat 14, 9300 Aalst</h2>
+        <!-- <iframe id="maps" scrolling="no" marginheight="0" marginwidth="0"
+            src="https://maps.google.be/maps?f=q&amp;source=s_q&amp;hl=nl&amp;geocode=&amp;q=Arbeidstraat+14,+Aalst&amp;aq=t&amp;sll=51.09623,4.227975&amp;sspn=1.076332,2.532349&amp;ie=UTF8&amp;hq=&amp;hnear=Arbeidstraat+14,+9300+Aalst,+Oost-Vlaanderen,+Vlaams+Gewest&amp;ll=50.937606,4.033613&amp;spn=0.008437,0.019784&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+     -->
+        <iframe id="maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2275.277832207683!2d4.030787276091219!3d50.93733335218898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3bd50b5ef0431%3A0xc512141215847b5a!2sArbeidstraat%2014%2C%209300%20Aalst!5e1!3m2!1snl!2sbe!4v1730734781615!5m2!1snl!2sbe"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div id="zone10">
+        <h1>Hope to see you there!</h1>
+
+        <video id="danceVideo" controls autoplay>
+            Jouw browser ondersteunt deze video niet :(
+            <source src="video/city.mp4" type="video/mp4">
+            <!-- <object type="application/x-shockwave-flash" data="video/city.mp4" width="100%">
+                <param name="movie" value="video/city.mp4" />
+            </object> -->
+        </video>
+    </div>
+
+</body>
+
+</html>
